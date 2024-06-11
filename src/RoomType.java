@@ -1,3 +1,0 @@
-public enum RoomType {
-    BEDROOM, CHILD_BEDROOM, KITCHEN, BATHROOM, WARDROBE, GYM;
-}

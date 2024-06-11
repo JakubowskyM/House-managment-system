@@ -41,19 +41,29 @@ public class Login extends JFrame {
 
                 String userNameInput = userField.getText();
                 String passInput = new String(passField.getPassword());
-
-                if(userNameInput.equals("admin") && passInput.equals("admin"))
-                {
-                    dispose();
-                    MainPanel m = new MainPanel(userNameInput);
-                    m.setVisible(true);
+                DBLogin log = new DBLogin();
+                Resident result = log.loginToDB(userNameInput,passInput);
+                if(result!=null) {
+                    JOptionPane.showMessageDialog(null, "Zalogowano", "Logowanie", JOptionPane.INFORMATION_MESSAGE);
+                    if(result.getLvl()==1)
+                    {
+                        dispose();
+                        MainPanel m = new MainPanel(userNameInput);
+                        m.setVisible(true);
+                    }
+                    if (result.getLvl()==2) {
+                        dispose();
+                        keeperMenu k = new keeperMenu();
+                        k.setVisible(true);
+                    }
                 }
                 else {
-                    JOptionPane.showMessageDialog(null,"bledne dane",
-                            "blad logowania",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Podano bledne dane logowania", "Logowanie", JOptionPane.ERROR_MESSAGE);
                 }
+                    ;
             }
         });
+
     }
 
 

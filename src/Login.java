@@ -1,3 +1,7 @@
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +17,6 @@ public class Login extends JFrame {
     private JPanel buttonPanel;
     private int width=400, height=300;
 
-    public static void main(String[] args) {
-        Login loginForm = new Login();
-        loginForm.setVisible(true);
-    }
 
     public Login() {
 

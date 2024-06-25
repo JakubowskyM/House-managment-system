@@ -44,7 +44,6 @@ public class Login extends JFrame {
                 DBLogin log = new DBLogin();
                 Resident result = log.loginToDB(userNameInput,passInput);
                 if(result!=null) {
-                    JOptionPane.showMessageDialog(null, "Zalogowano", "Logowanie", JOptionPane.INFORMATION_MESSAGE);
                     if(result.getLvl()==1)
                     {
                         dispose();
@@ -53,8 +52,13 @@ public class Login extends JFrame {
                     }
                     if (result.getLvl()==2) {
                         dispose();
-                        keeperMenu k = new keeperMenu();
+                        keeperMenu k = new keeperMenu(result.getLvl(),result.getId());
                         k.setVisible(true);
+                    }
+                    if (result.getLvl()==3){
+                        dispose();
+                        Admin adminMenu = new Admin();
+                        adminMenu.setVisible(true);
                     }
                 }
                 else {

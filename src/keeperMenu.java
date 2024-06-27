@@ -34,8 +34,8 @@ public class keeperMenu extends JFrame{
         newTasks.setText(String.valueOf(howManyReports));
 
         //pobieranie wiadomosci z bazy
-        DBManageData dbms = new DBManageData();
-        List<RecordsForMessages> rfm = dbms.getMessagesForKeepers(lvl);
+        MessagesDAO messagesDAO = new MessagesDAO();
+        List<RecordsForMessages> rfm = messagesDAO.getMessagesForKeepers();
         String [] columnNames = {"Id","Tytul","Data wyslania","Numer mieszkania"};
 
         DefaultTableModel dtm = new DefaultTableModel(0,0);
@@ -85,7 +85,7 @@ public class keeperMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                List<RecordsForMessages> rfrsh = dbms.getMessagesForKeepers(lvl);
+                List<RecordsForMessages> rfrsh = messagesDAO.getMessagesForKeepers();
                 dtm.setRowCount(0);
                 for(int i=0;i<rfrsh.size();i++){
                     dtm.addRow(new Object[] {rfrsh.get(i).getId(),rfrsh.get(i).getTitle(),rfrsh.get(i).getDateSent(),rfrsh.get(i).getId_f()});

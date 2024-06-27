@@ -64,8 +64,9 @@ public class Admin extends  JFrame{
                                 int wybor = JOptionPane.showOptionDialog(null,"Na pewno chcesz usunac tego mieszkańca?","Usuwanie mieszkańca",
                                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tak","Anuluj"},"Tak");
                                 if(wybor==JOptionPane.YES_OPTION){
-                                    DBManageData.deleteResident(selectedResidentID);
-                                    DBManageData.updateAutoIncrementUsers();
+                                    ResidentDAO residentDAO = new ResidentDAO();
+                                    residentDAO.deleteResident(selectedResidentID);
+                                    residentDAO.updateAutoIncrementUsers();
                                     JOptionPane.showMessageDialog(null,"Usunięto mieszkańca");
                                     infoTable.setModel(getResidentTable());
                                 }
@@ -120,8 +121,9 @@ public class Admin extends  JFrame{
                                 int wybor = JOptionPane.showOptionDialog(null,"Na pewno chcesz usunac tego konserwatora?","Usuwanie konserwatora",
                                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tak","Anuluj"},"Tak");
                                 if(wybor==JOptionPane.YES_OPTION){
-                                    DBManageData.deleteKeeper(selectedKeeperID);
-                                    DBManageData.updateAutoIncrementUsers();
+                                    KeeperDAO keeperDAO = new KeeperDAO();
+                                    keeperDAO.deleteKeeper(selectedKeeperID);
+                                    keeperDAO.updateAutoIncrementUsers();
                                     JOptionPane.showMessageDialog(null,"Usunięto konserwatora");
                                     infoTable.setModel(getKeeperTable());
                                 }
@@ -171,7 +173,7 @@ public class Admin extends  JFrame{
 
     public DefaultTableModel getKeeperTable() {
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
-        DBManageData allKeepers = new DBManageData();
+        KeeperDAO allKeepers = new KeeperDAO();
         String[] columnNames = {"Id", "Imie", "Nazwisko", "Liczba ukonczonych zadan"};
         List<Keepers> keepersList = allKeepers.getAllKeepers();
         dtm.setColumnIdentifiers(columnNames);
@@ -181,7 +183,7 @@ public class Admin extends  JFrame{
     }
     public DefaultTableModel getResidentTable(){
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
-        DBManageData allResidents = new DBManageData();
+        ResidentDAO allResidents = new ResidentDAO();
         String [] columnNames = {"Imie","Nazwisko","Id mieszkania"};
         List<Resident> residentList = allResidents.getAllResidents();
         dtm.setColumnIdentifiers(columnNames);

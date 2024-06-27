@@ -4,10 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class tableForCurrentTasks extends JFrame {
@@ -27,7 +23,7 @@ public class tableForCurrentTasks extends JFrame {
         this.setSize(width,height);
         this.setLocationRelativeTo(null);
 
-        DBManageData cT = new DBManageData();
+        MessagesDAO cT = new MessagesDAO();
         List<RecordsForMessages> cM = cT.getTakenReportByKeeperId(id);
         String [] columnNames = {"Id","Tytul","Data zgloszenia","Numer mieszkania", "Data przyjecia"};
         DefaultTableModel dTm = new DefaultTableModel(0,0);
@@ -59,7 +55,7 @@ public class tableForCurrentTasks extends JFrame {
                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tak","Anuluj"},"Tak");
                 if(wybor == JOptionPane.YES_OPTION){
 
-                    DBManageData.endTask(selectedTask,id);
+                    MessagesDAO.endTask(selectedTask,id);
                     JOptionPane.showMessageDialog(null,"Zadanie zakonczone, dziękujemy.");
 
                     dispose();

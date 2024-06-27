@@ -29,7 +29,9 @@ public class addResidentWindow extends  JFrame {
         this.setLocationRelativeTo(null);
 
         addToJComboBox();
-        yourLoginLabel.setText(DBManageData.lastLogin());
+
+        String lastLog = new ResidentDAO().lastLogin();
+        yourLoginLabel.setText(lastLog);
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -40,8 +42,10 @@ public class addResidentWindow extends  JFrame {
                         validateNameFields(surnameField.getText());
                         validateLoginsFields(passField.getText());
 
-                        DBManageData.addResident(nameField.getText(), surnameField.getText(), Integer.parseInt(passField.getText()),
-                                Integer.parseInt(comboBox1.getSelectedItem().toString()), DBManageData.lastID());
+
+                        ResidentDAO residentDAO = new ResidentDAO();
+                        residentDAO.addResident(nameField.getText(), surnameField.getText(), Integer.parseInt(passField.getText()),
+                                Integer.parseInt(comboBox1.getSelectedItem().toString()), residentDAO.lastID());
 
                         JOptionPane.showMessageDialog(null, "Mieszkaniec dodany", "Dodano", JOptionPane.INFORMATION_MESSAGE);
                         dispose();

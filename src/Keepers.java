@@ -1,5 +1,3 @@
-
-
 public class Keepers {
     private int id;
     private String name;

@@ -25,8 +25,8 @@ public class MainPanel extends JFrame {
         zarządzajWewnątrzButton.setFocusable(false);
         zarządzajZewnątrzButton.setFocusable(false);
 
-        DBManageData dbmd = new DBManageData();
-        String name = dbmd.whatsmyName(id, id_f);
+        ResidentDAO residentDAO = new ResidentDAO();
+        String name = residentDAO.whatsmyName(id, id_f);
         welcomeLabel.setText(welcomeLabel.getText()+" "+name);
         flatLabel.setText(flatLabel.getText()+" "+id_f);
 

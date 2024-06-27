@@ -21,8 +21,8 @@ public class addKeeperWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(width, height);
         this.setLocationRelativeTo(null);
-
-        yourLoginLabel.setText(DBManageData.lastLogin());
+        KeeperDAO keeperDAO = new KeeperDAO();
+        yourLoginLabel.setText(keeperDAO.lastLogin());
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -33,9 +33,7 @@ public class addKeeperWindow extends JFrame {
                     validateNameFields(surnameField.getText());
                     validateLoginsFields(passField.getText());
 
-
-                    DBManageData.addKeeper(nameField.getText(), surnameField.getText(), Integer.parseInt(passField.getText()));
-
+                    keeperDAO.addKeeper(nameField.getText(), surnameField.getText(), Integer.parseInt(passField.getText()));
                     JOptionPane.showMessageDialog(null, "Konserwator dodany", "Dodano", JOptionPane.INFORMATION_MESSAGE);
                     dispose();}
                     else {

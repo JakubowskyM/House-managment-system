@@ -37,7 +37,7 @@ public class Message extends JFrame {
                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tak","Anuluj"},"Tak");
                 if(wybor == JOptionPane.YES_OPTION){
 
-                    DBManageData.getTask(keeper_id,id);
+                    MessagesDAO.getTask(keeper_id,id);
 
                     JOptionPane.showMessageDialog(null,"Zlecenie przyjete");
 

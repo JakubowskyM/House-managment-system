@@ -25,7 +25,7 @@ public class SendReport extends JFrame{
                 if(!textArea1.getText().isEmpty() && !tittleField.getText().isEmpty()){
                     String message = textArea1.getText();
                     String tittle = tittleField.getText();
-                    DBManageData.sendReport(flatName,id_resident,message,tittle,id_f);
+                    MessagesDAO.sendReport(flatName,id_resident,message,tittle,id_f);
                     JOptionPane.showMessageDialog(null,"Wysłano wiadomosć");
                     dispose();
                 }

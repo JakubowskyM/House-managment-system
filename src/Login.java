@@ -1,7 +1,3 @@
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,12 +38,12 @@ public class Login extends JFrame {
                 String userNameInput = userField.getText();
                 String passInput = new String(passField.getPassword());
                 DBLogin log = new DBLogin();
-                Resident result = log.loginToDB(userNameInput,passInput);
+                User result = log.loginToDB(userNameInput,passInput);
                 if(result!=null) {
                     if(result.getLvl()==1)
                     {
                         dispose();
-                        MainPanel m = new MainPanel(userNameInput);
+                        MainPanel m = new MainPanel(result.getId(),result.getFlat());
                         m.setVisible(true);
                     }
                     if (result.getLvl()==2) {

@@ -1,7 +1,7 @@
 
 import java.sql.*;
 public class DBLogin {
-    public Resident loginToDB(String login, String password) {
+    public User loginToDB(String login, String password) {
         String sql = "SELECT Id, Login, Access_lvl, Id_f, Password FROM users WHERE Login=? AND Password=?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -12,7 +12,7 @@ public class DBLogin {
                     int id_f = rs.getInt("Id_f");
                     int accessLvl = rs.getInt("Access_lvl");
                     int id = rs.getInt("Id");
-                    return new Resident(id_f,accessLvl,id);
+                    return new User(id_f,accessLvl,id);
                 }
             }
 

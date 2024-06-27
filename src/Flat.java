@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Flat {
-    private ArrayList<Room> rooms = new ArrayList<>();
+    private ArrayList<RoomSettings> rooms = new ArrayList<>();
     private String house_name;
     private double square_footage;
 

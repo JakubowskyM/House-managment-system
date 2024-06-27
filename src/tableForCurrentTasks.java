@@ -55,26 +55,11 @@ public class tableForCurrentTasks extends JFrame {
         endTask.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int wybor = JOptionPane.showOptionDialog(null,"Czy na pewno ukonczyles to zlecenie?","Ukoncznone zlecenie",
+                int wybor = JOptionPane.showOptionDialog(null,"Czy na pewno ukonczyles to zlecenie?","Ukonczone zlecenie",
                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tak","Anuluj"},"Tak");
                 if(wybor == JOptionPane.YES_OPTION){
 
-                    String endTaskSQL = "UPDATE messages SET Stan=3, Date_end=? WHERE Id=?";
-                    String countEndedTasks = "UPDATE keepers SET completed_tasks=completed_tasks+1 WHERE Id=?";
-                    LocalDate date = LocalDate.now();
-                    try(Connection c = DBConnection.getConnection();
-                        PreparedStatement ps = c.prepareStatement(endTaskSQL);
-                        PreparedStatement countPs = c.prepareStatement(countEndedTasks)) {
-                        ps.setString(1, String.valueOf(date));
-                        ps.setInt(2,selectedTask);
-                        countPs.setInt(1,id);
-                        ps.executeUpdate();
-                        countPs.executeUpdate();
-                    }
-
-                    catch (SQLException a) {
-                        a.printStackTrace();
-                    }
+                    DBManageData.endTask(selectedTask,id);
                     JOptionPane.showMessageDialog(null,"Zadanie zakonczone, dziękujemy.");
 
                     dispose();

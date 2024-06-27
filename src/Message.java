@@ -37,20 +37,8 @@ public class Message extends JFrame {
                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tak","Anuluj"},"Tak");
                 if(wybor == JOptionPane.YES_OPTION){
 
-                    String getTaskSQL = "UPDATE messages SET keeper_id=?, Stan=? , Date_take=? WHERE Id=?";
-                    LocalDate date = LocalDate.now();
-                    try(Connection c = DBConnection.getConnection();
-                        PreparedStatement ps = c.prepareStatement(getTaskSQL)) {
-                        ps.setInt(1,keeper_id);
-                        ps.setInt(2,1);
-                        ps.setDate(3, Date.valueOf(date));
-                        ps.setInt(4,id);
-                        ps.executeUpdate();
-                        }
+                    DBManageData.getTask(keeper_id,id);
 
-                    catch (SQLException a) {
-                        a.printStackTrace();
-                    }
                     JOptionPane.showMessageDialog(null,"Zlecenie przyjete");
 
                     dispose();

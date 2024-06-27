@@ -1,0 +1,5 @@
+Sypialnia;1;0;1;16
+Sypialnia2;1;1;0
+Kuchnia;1;1;1;24
+Łazienka;1;0;0
+Salon;1;1;1;18

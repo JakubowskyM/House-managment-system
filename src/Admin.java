@@ -85,6 +85,12 @@ public class Admin extends  JFrame{
                         infoTable.setModel(getKeeperTable());
                     }
                 });
+                refreshButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                    infoTable.setModel(getResidentTable());
+                    }
+                });
             }
         });
 
@@ -136,6 +142,12 @@ public class Admin extends  JFrame{
                     }
                 });
 
+                refreshButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                    infoTable.setModel(getKeeperTable());
+                    }
+                });
 
 
             }
@@ -154,12 +166,7 @@ public class Admin extends  JFrame{
         });
 
         getContentPane().requestFocusInWindow();
-        refreshButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
     }
 
     public DefaultTableModel getKeeperTable() {

@@ -5,7 +5,7 @@ import java.util.List;
 public class roomSettingsFromFile {
 
     public static RoomSettings loadSettings(String roomName, String id_f){
-            try(BufferedReader br = new BufferedReader(new FileReader("C:/Users/Milosz/IdeaProjects/House-managment-system/src/ustawienia_"+id_f+".txt")))    {
+            try(BufferedReader br = new BufferedReader(new FileReader("C:/Users/......./ustawienia_"+id_f+".txt")))    {
             String line;
             while((line = br.readLine())!=null) {
                 String [] settingsArray = line.split(";");
@@ -34,7 +34,7 @@ public class roomSettingsFromFile {
         List<String> lines = new ArrayList<>();
         boolean roomFound = false;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("C:/Users/Milosz/IdeaProjects/House-managment-system/src/ustawienia_"+id_f+".txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:/Users/....../ustawienia_"+id_f+".txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] settingsArray = line.split(";");
@@ -52,7 +52,7 @@ public class roomSettingsFromFile {
             lines.add(roomSettings.toStringTemperature(roomName));
         }
 
-        try (PrintWriter pw = new PrintWriter(new FileWriter("C:/Users/Milosz/IdeaProjects/House-managment-system/src/ustawienia_"+id_f+".txt"))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter("C:/Users/....../ustawienia_"+id_f+".txt"))) {
             for (String line : lines) {
                 pw.println(line);
             }

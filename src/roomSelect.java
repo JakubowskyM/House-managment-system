@@ -35,7 +35,7 @@ public class roomSelect extends JFrame{
         bedroomButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+
                 insideControl iC = new insideControl(id,id_f,"Sypialnia");
                 iC.setVisible(true);
             }
@@ -44,7 +44,6 @@ public class roomSelect extends JFrame{
         bedroom2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 insideControl iC = new insideControl(id,id_f,"Sypialnia2");
                 iC.setVisible(true);
             }
@@ -53,7 +52,7 @@ public class roomSelect extends JFrame{
         kitchenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+               ;
                 insideControl iC = new insideControl(id,id_f,"Kuchnia");
                 iC.setVisible(true);
             }
@@ -62,7 +61,7 @@ public class roomSelect extends JFrame{
         livingroomButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+
                 insideControl iC = new insideControl(id,id_f,"Salon");
                 iC.setVisible(true);
             }
@@ -71,7 +70,7 @@ public class roomSelect extends JFrame{
         bathroomButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+
                 insideControl iC = new insideControl(id,id_f,"Łazienka");
                 iC.setVisible(true);
             }

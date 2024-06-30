@@ -52,16 +52,22 @@ public class insideControl extends JFrame{
         int blinds = roomSettingsFromFile.loadSettings(room_Name,s_id_f).getBlinds();
         int airConditioning = roomSettingsFromFile.loadSettings(room_Name,s_id_f).getAirConditioning();
 
-
-        if(blinds==1){
-            blindOnRadioButton.setEnabled(true);
-            blindsOffRadioButton.setEnabled(true);
-            blindOnRadioButton.setSelected(true);
-        }
         if(light==1){
             lightOnRadioButton.setEnabled(true);
             lightOnRadioButton.setSelected(true);
+
+        }
+        else {
             lightOffRadioButton.setEnabled(true);
+            lightOffRadioButton.setSelected(true);
+        }
+        if(blinds==1){
+            blindOnRadioButton.setEnabled(true);
+            blindOnRadioButton.setSelected(true);
+        }
+        else {
+            blindsOffRadioButton.setEnabled(true);
+            blindsOffRadioButton.setSelected(true);
         }
         if(airConditioning==1)
         {
@@ -69,15 +75,15 @@ public class insideControl extends JFrame{
             slider1.setValue(roomSettingsFromFile.loadSettings(room_Name,s_id_f).getTemperature());
             temperatureLabel.setText(temperatureLabel.getText()+String.valueOf(roomSettingsFromFile.loadSettings(room_Name,s_id_f).getTemperature()));
         }
-
+        else {
+            temperatureLabel.setText("Wyłączona");
+        }
 
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                roomSelect rS = new roomSelect(id,id_f);
-                rS.setVisible(true);
             }
         });
 
@@ -108,31 +114,13 @@ public class insideControl extends JFrame{
                 int airConditioning = 1;
                     RoomSettings updatedSettings = new RoomSettings(light, blinds, airConditioning, temperature);
                     roomSettingsFromFile.saveSettings(room_Name,updatedSettings,s_id_f);
-
-
                 }
                 else {
                     int airConditioning = 0;
                     RoomSettings updatedSettings = new RoomSettings(light,blinds,airConditioning);
                     roomSettingsFromFile.saveSettings(room_Name,updatedSettings,s_id_f);
-
-
                 }
-
-
-
             }
         });
-
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                roomSelect rS = new roomSelect(id,id_f);
-                rS.setVisible(true);
-            }
-        });
-
     }
-
 }
